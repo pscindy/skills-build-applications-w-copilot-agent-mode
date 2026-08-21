@@ -1,9 +1,12 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
-import { toCollection } from '../api.js'
+import { API_BASE_URL, toCollection } from '../api.js'
 
 function Leaderboard() {
-  const { data, loading, error } = useResource('leaderboard')
+  const leaderboardEndpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+    : `${API_BASE_URL}/api/leaderboard/`
+  const { data, loading, error } = useResource('leaderboard', leaderboardEndpoint)
   const entries = toCollection(data)
 
   return (

@@ -1,9 +1,12 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
-import { toCollection } from '../api.js'
+import { API_BASE_URL, toCollection } from '../api.js'
 
 function Workouts() {
-  const { data, loading, error } = useResource('workouts')
+  const workoutsEndpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+    : `${API_BASE_URL}/api/workouts/`
+  const { data, loading, error } = useResource('workouts', workoutsEndpoint)
   const workouts = toCollection(data)
 
   return (

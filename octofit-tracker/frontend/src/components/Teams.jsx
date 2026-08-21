@@ -1,9 +1,12 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
-import { toCollection } from '../api.js'
+import { API_BASE_URL, toCollection } from '../api.js'
 
 function Teams() {
-  const { data, loading, error } = useResource('teams')
+  const teamsEndpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+    : `${API_BASE_URL}/api/teams/`
+  const { data, loading, error } = useResource('teams', teamsEndpoint)
   const teams = toCollection(data)
 
   return (

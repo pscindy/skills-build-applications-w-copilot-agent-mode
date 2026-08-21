@@ -1,9 +1,12 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
-import { toCollection } from '../api.js'
+import { API_BASE_URL, toCollection } from '../api.js'
 
 function Users() {
-  const { data, loading, error } = useResource('users')
+  const usersEndpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+    : `${API_BASE_URL}/api/users/`
+  const { data, loading, error } = useResource('users', usersEndpoint)
   const users = toCollection(data)
 
   return (
