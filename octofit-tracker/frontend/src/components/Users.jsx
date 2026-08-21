@@ -1,15 +1,16 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
+import { toCollection } from '../api.js'
 
 function Users() {
   const { data, loading, error } = useResource('users')
-  const users = Array.isArray(data) ? data : []
+  const users = toCollection(data)
 
   return (
     <ResourceState title="Athletes" loading={loading} error={error}>
       <div className="row g-3">
-        {users.map((user) => (
-          <div className="col-12 col-md-6 col-xl-4" key={user._id || user.id || user.username}>
+        {users.map((user, index) => (
+          <div className="col-12 col-md-6 col-xl-4" key={user._id || user.id || user.username || index}>
             <article className="resource-card h-100">
               <div className="avatar">{(user.profile?.displayName || user.username || '?')[0]}</div>
               <h2>{user.profile?.displayName || user.username || 'Unnamed athlete'}</h2>

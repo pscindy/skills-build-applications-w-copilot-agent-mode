@@ -1,9 +1,10 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
+import { toCollection } from '../api.js'
 
 function Leaderboard() {
   const { data, loading, error } = useResource('leaderboard')
-  const entries = Array.isArray(data) ? data : []
+  const entries = toCollection(data)
 
   return (
     <ResourceState title="Leaderboard" loading={loading} error={error}>

@@ -1,9 +1,10 @@
 import { ResourceState } from './ResourceState.jsx'
 import { useResource } from './useResource.js'
+import { toCollection } from '../api.js'
 
 function Workouts() {
   const { data, loading, error } = useResource('workouts')
-  const workouts = Array.isArray(data) ? data : []
+  const workouts = toCollection(data)
 
   return (
     <ResourceState title="Workout ideas" loading={loading} error={error}>

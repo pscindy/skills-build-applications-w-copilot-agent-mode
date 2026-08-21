@@ -8,11 +8,11 @@ import './App.css'
 
 function App() {
   const navigation = [
-    ['users', 'Users'],
-    ['activities', 'Activities'],
-    ['teams', 'Teams'],
-    ['leaderboard', 'Leaderboard'],
-    ['workouts', 'Workouts'],
+    { path: 'users', label: 'Users' },
+    { path: 'activities', label: 'Activities' },
+    { path: 'teams', label: 'Teams' },
+    { path: 'leaderboard', label: 'Leaderboard' },
+    { path: 'workouts', label: 'Workouts' },
   ]
 
   return (
@@ -24,7 +24,7 @@ function App() {
             <span>OctoFit <em>Tracker</em></span>
           </NavLink>
           <nav className="nav nav-pills gap-1" aria-label="Primary navigation">
-            {navigation.map(([path, label]) => (
+            {navigation.map(({ path, label }) => (
               <NavLink
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 key={path}

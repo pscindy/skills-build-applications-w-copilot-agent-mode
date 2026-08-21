@@ -4,12 +4,12 @@ export const API_BASE_URL = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : 'http://localhost:8000'
 
-function collectionItems(payload) {
+export function toCollection(payload) {
   if (Array.isArray(payload)) return payload
   if (!payload || typeof payload !== 'object') return []
 
   for (const key of ['data', 'results', 'items', 'records']) {
-    const items = collectionItems(payload[key])
+    const items = toCollection(payload[key])
     if (items.length || Array.isArray(payload[key])) return items
   }
 
@@ -24,5 +24,5 @@ export async function fetchCollection(resource) {
   }
 
   const payload = await response.json()
-  return collectionItems(payload)
+  return toCollection(payload)
 }

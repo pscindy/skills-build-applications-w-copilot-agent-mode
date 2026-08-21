@@ -1,4 +1,4 @@
-# React + Vite
+# OctoFit Tracker frontend
 
 ## API configuration
 
@@ -14,7 +14,11 @@ The API base URL becomes
 `https://your-codespace-name-8000.app.github.dev`. When the variable is unset,
 the frontend safely falls back to `http://localhost:8000`.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Run the presentation tier with `npm run dev -- --host 0.0.0.0` from this directory.
+
+The app uses `react-router-dom` for navigation and requests each resource from
+`/api/[component]/` on the backend tier. Collection endpoints may return either
+an array or a paginated envelope such as `{ "results": [] }`.
 
 Currently, two official plugins are available:
 
