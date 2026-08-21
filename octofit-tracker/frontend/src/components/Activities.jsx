@@ -3,6 +3,7 @@ import { useResource } from './useResource.js'
 
 function Activities() {
   const { data, loading, error } = useResource('activities')
+  const activities = Array.isArray(data) ? data : []
 
   return (
     <ResourceState title="Activity feed" loading={loading} error={error}>
@@ -10,7 +11,7 @@ function Activities() {
         <table className="table align-middle mb-0">
           <thead><tr><th>Activity</th><th>Duration</th><th>Date</th><th>Intensity</th></tr></thead>
           <tbody>
-            {data.map((activity, index) => (
+            {activities.map((activity, index) => (
               <tr key={activity._id || activity.id || index}>
                 <td><strong>{activity.type || activity.name || 'Workout'}</strong></td>
                 <td>{activity.duration ? `${activity.duration} min` : '—'}</td>
@@ -21,7 +22,7 @@ function Activities() {
           </tbody>
         </table>
       </div>
-      {!data.length && <p className="muted mt-3">No activities found.</p>}
+      {!activities.length && <p className="muted mt-3">No activities found.</p>}
     </ResourceState>
   )
 }

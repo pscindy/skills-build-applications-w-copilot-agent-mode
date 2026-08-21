@@ -3,11 +3,12 @@ import { useResource } from './useResource.js'
 
 function Users() {
   const { data, loading, error } = useResource('users')
+  const users = Array.isArray(data) ? data : []
 
   return (
     <ResourceState title="Athletes" loading={loading} error={error}>
       <div className="row g-3">
-        {data.map((user) => (
+        {users.map((user) => (
           <div className="col-12 col-md-6 col-xl-4" key={user._id || user.id || user.username}>
             <article className="resource-card h-100">
               <div className="avatar">{(user.profile?.displayName || user.username || '?')[0]}</div>
@@ -18,7 +19,7 @@ function Users() {
           </div>
         ))}
       </div>
-      {!data.length && <p className="muted">No athletes found.</p>}
+      {!users.length && <p className="muted">No athletes found.</p>}
     </ResourceState>
   )
 }

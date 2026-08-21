@@ -3,8 +3,8 @@
 ## API configuration
 
 The frontend reads `VITE_CODESPACE_NAME` through Vite's `import.meta.env` values.
-Copy `.env.example` to `.env.local` and define the Codespace name when running the
-presentation tier in Codespaces:
+`VITE_CODESPACE_NAME` must be defined in `.env.local` when running the presentation
+tier in Codespaces. Copy `.env.example` to `.env.local` and set the Codespace name:
 
 ```env
 VITE_CODESPACE_NAME=your-codespace-name

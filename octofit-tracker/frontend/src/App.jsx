@@ -7,6 +7,14 @@ import Workouts from './components/Workouts.jsx'
 import './App.css'
 
 function App() {
+  const navigation = [
+    ['users', 'Users'],
+    ['activities', 'Activities'],
+    ['teams', 'Teams'],
+    ['leaderboard', 'Leaderboard'],
+    ['workouts', 'Workouts'],
+  ]
+
   return (
     <div className="app-shell">
       <header className="navbar navbar-expand-lg app-header">
@@ -16,13 +24,7 @@ function App() {
             <span>OctoFit <em>Tracker</em></span>
           </NavLink>
           <nav className="nav nav-pills gap-1" aria-label="Primary navigation">
-            {[
-              ['users', 'Users'],
-              ['activities', 'Activities'],
-              ['teams', 'Teams'],
-              ['leaderboard', 'Leaderboard'],
-              ['workouts', 'Workouts'],
-            ].map(([path, label]) => (
+            {navigation.map(([path, label]) => (
               <NavLink
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 key={path}

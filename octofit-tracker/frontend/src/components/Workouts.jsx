@@ -3,11 +3,12 @@ import { useResource } from './useResource.js'
 
 function Workouts() {
   const { data, loading, error } = useResource('workouts')
+  const workouts = Array.isArray(data) ? data : []
 
   return (
     <ResourceState title="Workout ideas" loading={loading} error={error}>
       <div className="row g-3">
-        {data.map((workout, index) => (
+        {workouts.map((workout, index) => (
           <div className="col-12 col-md-6 col-xl-4" key={workout._id || workout.id || index}>
             <article className="resource-card h-100">
               <p className="eyebrow">Suggestion {String(index + 1).padStart(2, '0')}</p>
@@ -18,7 +19,7 @@ function Workouts() {
           </div>
         ))}
       </div>
-      {!data.length && <p className="muted">No workout suggestions found.</p>}
+      {!workouts.length && <p className="muted">No workout suggestions found.</p>}
     </ResourceState>
   )
 }
