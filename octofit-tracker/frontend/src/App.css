@@ -1,0 +1,21 @@
+.app-shell { min-height: 100vh; }
+.app-header { background: #102a2d; border-bottom: 4px solid #e7b85b; }
+.brand-mark { color: #f5f1e8; font-family: Georgia, serif; font-size: 1.35rem; letter-spacing: 0; }
+.brand-mark:hover { color: #f5f1e8; }
+.brand-mark em { color: #e7b85b; font-style: normal; }
+.brand-orbit { display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: .5rem; border: 2px solid #e7b85b; border-radius: 50%; color: #e7b85b; font-family: Georgia, serif; }
+.nav-link { color: #b8cdca; }
+.nav-link:hover, .nav-link.active { color: #102a2d; background: #e7b85b; }
+.page-title { margin: 0; color: #102a2d; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 0; }
+.eyebrow { margin: 0 0 .35rem; color: #b16b35; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.status-chip, .tag { display: inline-block; border-radius: 999px; padding: .35rem .75rem; background: #d9ebe5; color: #24635d; font-size: .78rem; font-weight: 700; }
+.resource-card { border: 1px solid #d8e0dc; border-radius: 8px; background: #fff; padding: 1.35rem; box-shadow: 0 12px 30px rgba(16, 42, 45, .07); }
+.resource-card h2 { margin: 0 0 .35rem; color: #102a2d; font-family: Georgia, serif; font-size: 1.35rem; letter-spacing: 0; }
+.muted { color: #647572; }
+.avatar { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; margin-bottom: 1rem; border-radius: 50%; background: #102a2d; color: #e7b85b; font-family: Georgia, serif; font-size: 1.35rem; }
+.table { --bs-table-bg: transparent; --bs-table-color: #102a2d; }
+.table thead th { color: #647572; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+.leader-row { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid #e6ece9; }
+.leader-row:last-child { border-bottom: 0; }
+.rank { color: #b16b35; font-family: Georgia, serif; font-size: 1.2rem; }
+.points { color: #24635d; font-weight: 700; }
