@@ -4,11 +4,11 @@ import './config/database.js';
 import { Activity, Leaderboard, Team, User, Workout } from './models/resources.js';
 
 const app = express();
-const port = Number(process.env.PORT) || 8000;
+const port = 8000;
 const codespaceName = process.env.CODESPACE_NAME;
 const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
-  : `http://localhost:${port}`;
+  : 'http://localhost:8000';
 
 app.use(express.json());
 
@@ -21,7 +21,7 @@ function registerResourceRoutes(
   model: mongoose.Model<any>,
   options: { sort?: Record<string, 1 | -1> } = {},
 ) {
-  app.get(`/api/${path}/`, async (_request, response) => {
+  app.get(`/api/${path}`, async (_request, response) => {
     try {
       const records = await model.find().sort(options.sort ?? { createdAt: -1 });
       response.json(records);
@@ -31,7 +31,7 @@ function registerResourceRoutes(
     }
   });
 
-  app.post(`/api/${path}/`, async (request, response) => {
+  app.post(`/api/${path}`, async (request, response) => {
     try {
       const record = await model.create(request.body);
       response.status(201).json(record);
